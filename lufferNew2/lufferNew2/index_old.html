@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Multiplication</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" >
+    <defs>
+      
+      <linearGradient id="Hope">
+        <stop offset="0%" stop-color="#5f777d" stop-opacity="1" />
+        <stop offset="50%" stop-color="#b2ced5" stop-opacity="1" />
+        <stop offset="100%" stop-color="#3f484a" stop-opacity="1" />
+      </linearGradient>
+      <linearGradient id="Glass">
+        <stop offset="0%" stop-color="#5f777d" stop-opacity="0.3" />
+        <stop offset="50%" stop-color="#b2ced5" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#3f484a" stop-opacity="0.2" />
+      </linearGradient>
+      <linearGradient id="Flat">
+        <stop offset="0%" stop-color="white" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="gray" stop-opacity="0.3" />
+      </linearGradient>
+      <linearGradient id="Bob">
+        <stop offset="0%" stop-color="white" stop-opacity="0.5" />
+        <stop offset="50%" stop-color="#242424" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="white" stop-opacity="0.2" />
+      </linearGradient>
+      
+      <linearGradient id="Timer">
+        <stop offset="0%" stop-color="#bc8cd1"  />
+        <stop offset="60%" stop-color="#622b7a"  />
+        <stop offset="100%" stop-color="#2a0e36"  />
+      </linearGradient>
+      <radialGradient id="BlueShadow">
+        <stop offset="0%" stop-color="blue" stop-opacity="1" />
+        <stop offset="100%" stop-color="white" stop-opacity="1" />
+      </radialGradient>
+      <filter id="GaussianBlur">
+        <feGaussianBlur stdDeviation="8 3" />
+      </filter>
+      
+    </defs>
+    
+  </svg>
+  <div id="app">
+    <div id="popup">
+      <div id="info-bar">
+        <p id="info-bar-text">Fyra-i-rad med tal</p>
+      </div>
+      
+        <div id="player-one-form" class="enter-player">
+          <div class="player-symbol" id="big-X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+
+              <text id="text-big-x" x="25%" y="95%" fill="white" transform="scale(2, 1)" stroke="transparent" text-anchor="middle"font-size="5em">X</text> 
+              <text class="player-input-text" id="p-1-l" x="50%" y="70%" fill="black" stroke="transparent" text-anchor="middle" font-size="5em">Enter player one:</text>
+            </svg>
+          </div>
+          
+          <input type="text" name="player-one" id="player-one" class="player-imput" maxlength="15" value="" />
+        </div>
+        <div id="player-two-form" class="enter-player">
+          <div class="player-symbol" id="big-O">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+              <text id="text-big-o" x="25%" y="95%" fill="white" transform="scale(2, 1)" stroke="transparent" text-anchor="middle"font-size="5em">O</text> 
+              <text class="player-input-text" id="p-2-l" x="50%" y="70%" fill="black" stroke="transparent" text-anchor="middle"font-size="5em">Enter player two:</text>
+            </svg>
+          </div>
+          <input type="text" name="player-two" id="player-two" class="player-imput" maxlength="15" value="" />
+        </div>
+      
+      <div class="information" id="multiplication">
+        <div class="information-title" id="multiplication-title">
+          <p class="information-title-text" id="multiplication-title-text">Multiplikation</p>
+        </div>
+        <div class="start-button" id="multi-start" onmousedown="confirmChoice('multi')" ><div class="start-text">start</div></div>
+
+        <table class="instruction-text" id="instruction-multiplication">
+          <tr><th>Level 1</th> <td>Multiplikation av heltal 2 till 16.</td></tr>
+          <tr><th>Level 2</th> <td>Multiplikation och division av heltal 2 till 16.</td></tr>
+          <tr><th>Level 3</th> <td>Multiplikation och division av slumpmässiga heltal.</td></tr>
+          <tr><th>Level 4</th> <td>Multiplikation och division av heltal och lätta decimaltal.</td></tr>
+          <tr><th>Level 5</th> <td>Multiplikation och division med random heltal och decimaltal.</td></tr>
+      </table>
+        <div id="multi-level-container" style="grid-area: 3/1/4/3;display: grid; grid-template-columns: repeat(5, 1fr); height:6vh; margin: 0 5% 5% 10%;">
+          <div class="outside" >
+            <div class="operator-choice" id="L1" onclick="chooseLevel(1)">
+              <div class="inside" id="iL1" >1</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="L2" onclick="chooseLevel(2)">
+              <div class="inside" id="iL2" >2</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="L3" onclick="chooseLevel(3)">
+              <div class="inside" id="iL3" >3</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="L4" onclick="chooseLevel(4)">
+              <div class="inside" id="iL4" >4</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="L5" onclick="chooseLevel(5)">
+              <div class="inside" id="iL5" >5</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="information" id="negative-numbers">
+        <div class="information-title" id="negative-title">
+          <p class="information-title-text" id="negative-title-text">Negativa tal</p>
+        </div>
+        <div class="start-button" id="negative-start" onmousedown="confirmChoice('negative')"><div class="start-text">start</div></div>
+        <table class="instruction-text" id="negative-options-text">
+          <tr><th>Option 1</th><td>Addition och subtraktion av tal -15 till -1.</td></tr>
+            <tr><th>Option 2</th><td>Addition och subtraktion av slumpmässiga negativa och positiva tal.</td></tr>
+            <tr><th>Option 3</th><td>Multiplikation och division av tal -15 till -1.</td></tr>
+            <tr><th>Option 4</th><td>Multiplikation och division av slumpmässiga negativa och positiva tal.</td></tr>
+            <tr><th>Option 5</th><td>Alla räknesätten med tal -15 till -1.</td></tr>
+            <tr><th>Option 6</th><td>Alla räknesätten med slumpmässiga negativa och positiva tal.</td></tr>
+
+        </table>
+        <div id="negative-options">
+          <div class="outside">
+            <div class="operator-choice" id="N1" onclick="negative(1)">
+              <div class="inside" id="iN1">1</div>
+            </div>
+          </div>
+          <div class="outside">
+            <div class="operator-choice" id="N2" onclick="negative(2)">
+              <div class="inside" id="iN2">2</div>
+            </div>
+          </div>
+          <div class="outside">
+            <div class="operator-choice" id="N3" onclick="negative(3)">
+              <div class="inside" id="iN3">3</div>
+            </div>
+          </div>
+          <div class="outside">
+            <div class="operator-choice" id="N4" onclick="negative(4)">
+              <div class="inside" id="iN4">4</div>
+            </div>
+          </div>
+          <div class="outside">
+            <div class="operator-choice" id="N5" onclick="negative(5)">
+              <div class="inside" id="iN5">5</div>
+            </div>
+          </div>
+          <div class="outside">
+            <div class="operator-choice" id="N6" onclick="negative(6)">
+              <div class="inside" id="iN6">6</div>
+            </div>
+          </div>
+        </div>
+
+        
+
+      </div>
+      <div class="information" id="custom">
+        <div class="information-title" id="custom-title">
+          <p class="information-title-text">Custom</p>
+        </div>
+        <div class="start-button" id="custom-start" onmousedown="confirmChoice('custom')"><div class="start-text">start</div></div>
+        <div class="instruction-text" id="instruction-custom" >
+          <p>Välj vilka tal och operatorer som ska användas...</p>
+          <table>
+            <tr><th>*</th><td>Skriv i 15:st tal mellan -99 och 99 (decimaltal fungera)</td></tr>
+            <tr><th>*</th><td>Välj 1 till 4 operatorer.</td></tr>
+            <tr><th>*</th><td>Tryck på "start" och lycka till!</td> </tr>
+          </table>
+        <div id="custom-numbers">
+          <input class="custom-number" id="CN1" type="number" max="99" min="-99"  oninput="onEnterNumbersCustom(id, value)" value="1"/>
+          <input class="custom-number" id="CN2" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="2"/>
+          <input class="custom-number" id="CN3" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="3"/>
+          <input class="custom-number" id="CN4" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="4"/>
+          <input class="custom-number" id="CN5" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="5"/>
+          <input class="custom-number" id="CN6" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="6"/>
+          <input class="custom-number" id="CN7" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="7"/>
+          <input class="custom-number" id="CN8" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="8"/>
+          <input class="custom-number" id="CN9" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="9"/>
+          <input class="custom-number" id="CN10" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="10"/>
+          <input class="custom-number" id="CN11" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="11"/>
+          <input class="custom-number" id="CN12" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="12"/>
+          <input class="custom-number" id="CN13" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="13"/>
+          <input class="custom-number" id="CN14" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="14"/>
+          <input class="custom-number" id="CN15" type="number" max="99" min="-99" oninput="onEnterNumbersCustom(id, value)" value="15"/>
+        </div>
+      </div>
+        <div class="custom-operators" >
+          <div class="outside" >
+            <div class="operator-choice" id="C+" onclick="onEnterOppsCustom(id)">
+              <div class="inside" id="iC+" >+</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="C-" onclick="onEnterOppsCustom(id)">
+              <div class="inside" id="iC-" >-</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="C*" onclick="onEnterOppsCustom(id)">
+              <div class="custom-inside" id="iC*" >*</div>
+            </div>
+          </div>
+          <div class="outside" >
+            <div class="operator-choice" id="C/" onclick="onEnterOppsCustom(id)">
+              <div class="inside" id="iC/" >/</div>
+            </div>
+          </div>
+          <div id="randomise" onmousedown="randomise()"><div id="random-text">random</div></div>
+          <div id="unrandomise" onmousedown="unrandomise()" ><div id="unrandom-text">reset</div></div>
+        </div>
+      </div>
+    </div>  
+    <div class="left">
+        <object id="left-image" data="left.svg" ></object>
+        <div id="board"></div>  
+    </div>
+    <div class="right">
+      <div class="timer">
+          <object id="timer-image" data="timer.svg" ></object>
+          <div id="timer-text" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+              <rect id="timer-text-box" x="2%" y="20%" rx="2%" ry="2%" width="90%" height="75%" fill="#2053c275" stroke="black" />
+              <text id="player-name" x="48%" y="30%" fill="white" stroke="White" text-anchor="middle">player One</text>
+              <text id="player-symbol" x="48%" y="72%" fill="blue" stroke="black" text-anchor="middle"font-size="5em">X</text>
+              <text id="get-ready" x="48%" y="87%" fill="white" stroke="white" text-anchor="middle" font-size="1.2em">GET READY!</text>
+            </svg>
+          </div>
+          <div id="timer-body">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+              <rect id="timer-fill" x="45%" y="0%"  width="10%" height="100%" fill="#2053c275" stroke="black" />
+              <rect id="timer-bar" x="45%" y="0"  width="10%" height="100%" fill="url(#Timer)" stroke="transparent" />
+            </svg>
+          </div>
+        </div>
+        
+      <div id="number-container">
+        <div id="paper">
+          <svg xmlns="http://www.w3.org/2000/svg" id="paper-svg">
+            <g>
+              <path
+                style="opacity:0.88999999;fill:#c8c4b7;stroke:#000000;stroke-width:0.40000001;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                d="m 8.0594958,0.68352741 17.6527002,0.0120582 0.54283,1.61085979 0.65713,-1.61004012 40.302057,0.0275295 0.72782,1.69438272 0.75437,-1.69438272 33.022537,-0.0118351 c 3.03113,0.13132039 4.82865,1.44762702 5.11445,4.64026182 l 0.0286,34.1153705 0.75104,0.744031 -1.59949,0.710532 0.82825,0.798837 -0.22224,23.787369 c -0.1465,6.579178 -4.51274,10.694695 -10.069217,10.556154 l -42.950452,-0.0069 -0.529817,0.837998 -0.561367,-1.592663 -0.640084,0.781802 -45.9835572,0.282254 c -2.876,-0.410052 -4.67231,-3.318815 -4.85641,-5.75342 V 41.010638 L 0.18533577,40.159669 1.9429558,39.43916 1.0572158,38.381982 1.0286158,7.3218657 c 0,-3.9525388 3.48834,-6.5891764 7.03088,-6.63833829 z"
+                id="rect4982" />
+              <path
+                style="fill:#aca793;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                d="m 1.0256358,7.3809974 c 0.86331,-2.9974066 3.02925,-2.7925362 5.94304,-3.4286803 -0.83643,-1.632471 -0.24425,-2.4649166 1.09082,-3.26878969 -3.9161,0.0895649 -6.97503,2.49348879 -7.03386,6.69746999 z"
+                id="path4985" />
+              <path
+                style="fill:#e3e2db;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+                d="m 106.83339,5.3523615 c -1.42838,-2.2357465 -2.55206,-2.1362931 -4.26223,-2.1590677 -1.07444,-1.2963115 -0.24233,-1.9220141 -0.65664,-2.49822292 2.89225,-0.003254 4.75412,1.95324992 4.91887,4.65729062 z"
+                id="path4987" />
+              <path
+                style="fill:#e3e2db;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+                d="m 106.62897,65.497128 c -5.54954,7.169339 -8.800267,4.33347 -9.686007,5.000158 0.97146,0.933364 1.77761,3.165333 0.17143,5.628752 5.798557,-0.343112 9.566437,-5.006624 9.514577,-10.62891 z"
+                id="path4989" />
+              <path
+                style="fill:#918a6f;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                d="m 1.0286458,70.613693 c 1.20856,1.294574 3.10285,2.017701 5.51145,2.169382 -1.76125,1.499451 -1.17958,2.084587 -0.65504,3.584038 -3.16171,-0.603479 -4.78051,-3.264167 -4.85641,-5.75342 z"
+                id="path4991" />
+              <path
+                style="opacity:0.253;fill:#000000;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;filter:url(#filter5185)"
+                d="m 101.97513,0.6546635 c -0.53784,1.3334381 0.0557,3.0507465 0.83114,4.3437773 1.5426,-1.0065834 3.16175,-0.5614052 4.02711,0.3539208 -0.49814,-0.7935685 -0.87481,-1.5873769 -1.85965,-1.8336369 -0.82106,-0.3913287 -1.62192,-0.3583798 -2.40257,-0.3254309 -0.8164,-0.8343408 -0.68446,-1.4308416 -0.59603,-2.5386303 z"
+                id="path5155" />
+              <path
+                style="opacity:0.25;fill:#000000;stroke:none;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5227)"
+                d="m 97.114393,76.126038 c -0.84516,-0.207324 -1.27438,-1.231698 -1.40004,-2.514367 -0.0476,-1.609576 0.50478,-2.447698 1.22862,-3.114387 1.78146,1.876251 1.05914,4.295377 0.17142,5.628754 z"
+                id="path5189" />
+              <path
+                style="opacity:0.25;fill:#000000;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;filter:url(#filter5261)"
+                d="m 106.62897,65.497128 c -2.66296,3.283014 -4.47737,5.313399 -9.685997,5.000156 0,0 -0.13142,-0.51177 1.23613,-0.707087 1.05038,-0.150019 1.68323,0.141651 3.354337,-0.483405 1.67636,-0.62702 5.09553,-3.809664 5.09553,-3.809664"
+                id="path5231" />
+            </g>
+          </svg>
+        </div>
+        <div id="numbers"></div>
+      </div>
+      <div id="number-pad" >
+        <div id="calculator-image">
+        <svg xmlns="http://www.w3.org/2000/svg" id="calculator-svg">
+        <g>
+        <path
+        style="opacity:0.88999999;fill:#333333;stroke:#000000;stroke-width:0.23149782;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        d="m 41.654266,77.792856 c -0.798844,0.356872 -2.397637,1.406168 -2.464611,2.753338 l -0.03255,92.241366 c 0.131682,1.79312 1.724003,2.63592 2.604887,3.00799 -1.696066,-0.128 -1.963584,-0.11284 -2.625926,-0.79489 -0.35763,-0.36827 -0.676852,-0.86391 -0.728504,-1.99192 l 0.04002,-92.822086 c 0,0 0.266481,-1.150977 0.828958,-1.618798 0.562478,-0.467821 0.818834,-0.652291 2.377726,-0.775 z"
+        id="rect4977" />
+     <rect
+        style="opacity:0.88999999;fill:#808080;stroke:#000000;stroke-width:0.40223476;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+        id="rect4979"
+        width="105.52115"
+        height="97.888596"
+        x="39.137104"
+        y="77.859116"
+        ry="3.2001016"
+        rx="2.998714" />
+   </g>
+  </svg></div>
+      <div id="buttons">
+            <div id="block-operators"></div>
+            <div id="delete" onmousedown="deleteExpr()" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+                <rect id="shdelete" x="0" y="5%"  width="95%" height="95%" fill="#00000034" stroke="transparent" />
+                <rect id="bsdelete" x="5%" y="0"  width="95%" height="95%" fill="black" stroke="black" />
+                <rect id="sddelete" x="7%" y="0"  width="93%" height="94%" fill="url(#Bob)" stroke="black" />
+                <text id="tdelete" x="50%" y="65%" text-anchor="middle" font-size="1.5em" fill="white" stroke="white" >delete</text>
+              </svg>
+            </div>          
+            <div class="operator-button" id="clearAll" onmousedown="clearAll(false)" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+                <rect id="shclearAll" x="0" y="5%"  width="95%" height="95%" fill="#00000034" stroke="transparent" />
+                <rect id="bsclearAll" x="5%" y="0"  width="95%" height="95%" fill="black" stroke="black" />
+                <rect id="sdclearAll" x="7%" y="0"  width="93%" height="94%" fill="url(#Bob)" stroke="black" />
+                <text id="tclearAll" x="50%" y="65%" text-anchor="middle" font-size="1.5em" fill="white" stroke="white" >clear</text>
+              </svg>
+            </div>
+            
+          </div>       
+      <div id="input">
+        <div class="choice" id="c1">
+            <p class="input-text" id="chosenNumber"></p>
+        </div>
+        <div class="choice" id="c2">
+            <p class="input-text" id="exprText"></p>
+          </div>
+      </div>
+      <div class="check" id="check" onmousedown="check()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" >
+          <rect id="shcheck" x="3%" y="5%"  width="95%" height="95%" fill="#00000034" stroke="transparent" />
+          <rect id="bscheck" x="5%" y="0"  width="95%" height="95%" fill="green" stroke="black" />
+          <rect id="sdcheck" x="7%" y="0"  width="93%" height="94%" fill="url(#Bob)" stroke="black" />
+          <text id="tcheck" x="50%" y="65%" text-anchor="middle" font-size="2em" fill="white" stroke="white" >check</text>
+        </svg>
+      </div>
+      </div>
+      <div id="current-score">
+        <object id="scores-image" data="scores.svg" ></object>
+        <div id="scores-container">
+        <div class="player-score" id="player-one-score">
+            <div class="p5" id="p15">
+              <p></p>
+            </div>
+            <div class="p4" id="p14">
+              <p></p>
+            </div>
+            <div class="p3" id="p13">
+              <p></p>
+            </div>
+            <div class="p2" id="p12">
+              <p></p>
+            </div>
+            <div class="p1" id="p11">
+              <p></p>
+            </div>
+            <div class="player-text-div" id="p1td">
+              <p class="player-score-text" id="player-one-label"></p>
+            </div>
+          </div>
+        <div class="player-score" id="player-two-score">
+            <div class="p5" id="p25">
+              <p></p>
+            </div>
+            <div class="p4" id="p24">
+              <p></p>
+            </div>
+            <div class="p3" id="p23">
+              <p></p>
+            </div>
+            <div class="p2" id="p22">
+              <p></p>
+            </div>
+            <div class="p1" id="p21">
+              <p></p>
+            </div>
+            <div class="player-text-div" id="p2td">
+              <p class="player-score-text" id="player-two-label"></p>
+            </div>
+          </div>
+        <div class="reset">
+          <button id="reset-button" styele="background-color:red;" onmousedown="confirmReset()">Reset</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    
+       
+  </div>
+
+  
+  
+
+  <script  src="script.js"></script>
+
+</body>
+</html>

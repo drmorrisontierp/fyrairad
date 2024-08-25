@@ -1,0 +1,79 @@
+
+<div>
+<svg xmlns="http://www.w3.org/2000/svg"
+   width="35.772568"
+   height="176.08844"
+   viewBox="0 0 35.772568 176.08844"
+   version="1.1"
+   id="svg18">
+  <defs
+     id="defs12">
+    <linearGradient id="linearGradient3265">
+      <stop
+         style="stop-color:#aa4400;stop-opacity:1"
+         offset="0"
+         id="stop3261" />
+      <stop
+         id="stop3269"
+         offset="0.54814988"
+         style="stop-color:#aa4400;stop-opacity:1" />
+      <stop
+         style="stop-color:#552200;stop-opacity:1"
+         offset="1"
+         id="stop3263" />
+    </linearGradient>
+    <linearGradient id="linearGradient3251" >
+      <stop
+         style="stop-color:#ae4cc2;stop-opacity:0.81094527"
+         offset="0"
+         id="stop3249" />
+      <stop
+         style="stop-color:#800080;stop-opacity:1;"
+         offset="1"
+         id="stop3247" />
+    </linearGradient>
+    <linearGradient
+       href="#linearGradient3251"
+       id="linearGradient3245"
+       x1="175.90146"
+       y1="130.03374"
+       x2="140.2394"
+       y2="137.79196"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="reflect"
+       gradientTransform="translate(-142)" />
+    <linearGradient
+       href="#linearGradient3265"
+       id="linearGradient3267"
+       x1="11.12521"
+       y1="121.65168"
+       x2="11.129869"
+       y2="125.14395"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.18723963,0,0,1.004145,2.05461,-0.5113506)" />
+  </defs>
+  
+  <g id="layer1"
+     transform="translate(-0.84924241,-121.01158)">
+    <rect
+       style="fill:#000000;fill-opacity:0.81094528;stroke:#000000;stroke-width:0.24632721;stroke-opacity:1"
+       id="rect3255"
+       width="30.023848"
+       height="6.7536726"
+       x="3.9908829"
+       y="121.13474" />
+    <rect
+       style="opacity:1;fill:url(#linearGradient3267);fill-opacity:1;stroke:#000000;stroke-width:0.16345353;stroke-opacity:1"
+       id="rect3259"
+       width="35.609116"
+       height="3.731719"
+       x="0.93096918"
+       y="121.50015" />
+    <path
+       style="fill:url(#linearGradient3245);fill-opacity:1;stroke:#ffd42a;stroke-width:0.19979355;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 4,121.14104 h 3.32884 v 5.78706 h 3.24621 v -5.78706 h 3.41144 v 5.78706 h 3.18492 v -5.78706 h 3.47277 v 5.78706 h 3.16647 v -5.78706 h 3.49119 v 5.78706 h 2.99587 v -5.78706 h 3.66182 V 297.00012 H 4 Z"
+       id="rect1097"
+        />
+  </g>
+</svg>
+</div>
