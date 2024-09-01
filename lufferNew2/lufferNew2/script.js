@@ -1012,24 +1012,26 @@ function check() {
   }, 150)
   const rows = ["A", "B", "C", "D", "E", "F"];
   if (lastEntered.length === 3) {
+    console.log("checking, entered numbers: ", enteredNumbers)
     clearInterval(newTimer);
     let playerTextID = player ? "p1" : "p2";
     let fill = player ? "#2053c2cf" : "#de423fcf";
     let answer;
     switch (enteredNumbers[1]) {
       case "+":
-        answer = parseFloat(enteredNumbers[0]) + parseFloat(enteredNumbers[2]);
+        answer = Math.round((parseFloat(enteredNumbers[0]) + parseFloat(enteredNumbers[2]))*10000)/10000;
         break;
       case "-":
-        answer = parseFloat(enteredNumbers[0]) - parseFloat(enteredNumbers[2]);
+        answer = Math.round((parseFloat(enteredNumbers[0]) - parseFloat(enteredNumbers[2]))*10000)/10000;
         break;
       case "/":
-        answer = parseFloat(enteredNumbers[0]) / parseFloat(enteredNumbers[2]);
+        answer = Math.round((parseFloat(enteredNumbers[0]) / parseFloat(enteredNumbers[2]))*10000)/10000;
         break;
       case "*":
-        answer = parseFloat(enteredNumbers[0]) * parseFloat(enteredNumbers[2]);
+        answer = Math.round((parseFloat(enteredNumbers[0]) * parseFloat(enteredNumbers[2]))*10000)/10000;
         break;
     }
+    console.log("Answer:", answer)
     let toCheckId = chosenNumber[0];
     playerTextID += toCheckId
     let textID = "t" + toCheckId
